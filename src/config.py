@@ -10,3 +10,5 @@ class Config(BaseSettings):
     rain_threshold_mm: float = 0.5
     alert_lead_minutes: int = 15
     daily_api_limit: int = 950
+
+    apprise_urls: str = ""

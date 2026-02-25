@@ -21,6 +21,32 @@ Uses the [OpenWeatherMap One Call 3.0](https://openweathermap.org/api/one-call-3
 | `POLL_INTERVAL_MINUTES` | | 10 | How often to check |
 | `RAIN_THRESHOLD_MM` | | 0.5 | Min precipitation to trigger alert (mm) |
 | `ALERT_LEAD_MINUTES` | | 15 | How far ahead to look (max 60) |
+| `APPRISE_URLS` | | | Comma-separated [Apprise URLs](https://github.com/caronc/apprise/wiki) (falls back to console) |
+
+## Notifications
+
+Notifications are powered by [Apprise](https://github.com/caronc/apprise), which supports 100+ services including Discord, Telegram, Slack, Email, WhatsApp (via Twilio), and more.
+
+Set `APPRISE_URLS` with one or more comma-separated Apprise URLs. If left empty, alerts are printed to the console.
+
+**Examples:**
+
+| Service | URL format |
+|---------|-----------|
+| Discord | `discord://webhook_id/webhook_token` |
+| Telegram | `tgram://bot_token/chat_id` |
+| Slack | `slack://token_a/token_b/token_c/#channel` |
+| Email (SMTP) | `mailto://user:pass@gmail.com` |
+| Pushover | `pover://user_key@app_token` |
+| ntfy | `ntfy://topic` |
+
+Multiple services at once:
+
+```env
+APPRISE_URLS=discord://webhook_id/webhook_token,tgram://bot_token/chat_id
+```
+
+See the full list of supported services at https://github.com/caronc/apprise/wiki
 
 ## API Notes
 

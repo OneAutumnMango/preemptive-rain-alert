@@ -18,7 +18,7 @@ async def check() -> None:
         return
     msg = analyse(cfg, snapshot)
     if msg:
-        notify(msg)
+        notify(cfg, msg)
     else:
         print(f"✓ No rain expected at {cfg.location_name}", flush=True)
 
