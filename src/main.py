@@ -3,6 +3,8 @@ import time
 
 import schedule
 
+from datetime import datetime
+
 from .alerter import analyse
 from .config import Config
 from .notifier import notify
@@ -14,13 +16,14 @@ async def check() -> None:
     try:
         snapshot = await fetch_weather(cfg)
     except RuntimeError as e:
-        print(f"⚠ {e}", flush=True)
+        print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] ⚠ {e}", flush=True)
         return
     msg = analyse(cfg, snapshot)
     if msg:
         notify(cfg, msg)
+        print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] Notification sent: {msg}", flush=True)
     else:
-        print(f"✓ No rain expected at {cfg.location_name}", flush=True)
+        print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] ✓ No rain expected at {cfg.location_name}", flush=True)
 
 
 def run_check() -> None:
@@ -29,9 +32,9 @@ def run_check() -> None:
 
 def main() -> None:
     cfg = Config()
-    print(f"Starting rain alert for {cfg.location_name} "
+    print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] Starting rain alert for {cfg.location_name} "
           f"({cfg.location_lat}, {cfg.location_lon})")
-    print(f"Polling every {cfg.poll_interval_minutes} min | "
+    print(f"[{datetime.now():%Y-%m-%d %H:%M:%S}] Polling every {cfg.poll_interval_minutes} min | "
           f"threshold {cfg.rain_threshold_mm} mm | "
           f"lead time {cfg.alert_lead_minutes} min")
 
