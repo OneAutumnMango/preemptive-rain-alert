@@ -30,4 +30,4 @@ The One Call 3.0 free tier gives you:
 - **Current** conditions updated every minute
 
 At the default 10-min poll interval that's 144 calls/day, well under the 1,000/day free limit.
-```
+
