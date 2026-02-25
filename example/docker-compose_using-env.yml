@@ -1,6 +1,6 @@
 services:
   rain-alert:
-    image: ghcr.io/davidwhittam-eaton/preemptive-rain-alert:dev
+    image: ghcr.io/oneautumnmango/preemptive-rain-alert:dev
     env_file:
       - .env.example
     restart: unless-stopped

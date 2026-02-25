@@ -1,6 +1,6 @@
 services:
   rain-alert:
-    image: ghcr.io/davidwhittam-eaton/preemptive-rain-alert:dev
+    image: ghcr.io/oneautumnmango/preemptive-rain-alert:dev
     environment:
       - OWM_API_KEY=your_key_here
       - LOCATION_LAT=1.3521
