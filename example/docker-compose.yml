@@ -1,0 +1,9 @@
+services:
+  rain-alert:
+    image: ghcr.io/davidwhittam-eaton/preemptive-rain-alert:dev
+    environment:
+      - OWM_API_KEY=your_key_here
+      - LOCATION_LAT=1.3521
+      - LOCATION_LON=103.8198
+      - LOCATION_NAME=Singapore
+    restart: unless-stopped
